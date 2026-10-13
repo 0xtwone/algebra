@@ -7,8 +7,12 @@ test_group!(pairing_output; ark_ec::pairing::PairingOutput<Bls12_377>; msm);
 test_pairing!(pairing; crate::Bls12_377);
 test_group!(g1_glv; G1Projective; glv);
 test_group!(g2_glv; G2Projective; glv);
-test_h2c!(g1_h2c; "./src/curves/tests"; "BLS12377G1"; crate::g1::Config; crate::Fq; crate::Fq; 1);
-test_h2c!(g2_hc2; "./src/curves/tests"; "BLS12377G2"; crate::g2::Config; crate::Fq2; crate::Fq; 2);
+test_h2c_suite!(g1_h2c; "./src/curves/tests"; "BLS12377G1"; crate::g1::Config; crate::Fq; crate::Fq; 1);
+test_h2c_suite!(g2_h2c; "./src/curves/tests"; "BLS12377G2"; crate::g2::Config; crate::Fq2; crate::Fq; 2);
+test_h2c!(g1_wb; crate::g1::Config; ark_ec::hashing::curve_maps::wb::WBMap<crate::g1::Config>; short_weierstrass);
+test_h2c!(g2_wb; crate::g2::Config; ark_ec::hashing::curve_maps::wb::WBMap<crate::g2::Config>; short_weierstrass);
+test_h2c!(g1_swu_iso; crate::curves::g1_swu_iso::SwuIsoConfig; ark_ec::hashing::curve_maps::swu::SWUMap<crate::curves::g1_swu_iso::SwuIsoConfig>; short_weierstrass);
+test_h2c!(g2_swu_iso; crate::curves::g2_swu_iso::SwuIsoConfig; ark_ec::hashing::curve_maps::swu::SWUMap<crate::curves::g2_swu_iso::SwuIsoConfig>; short_weierstrass);
 
 #[cfg(test)]
 mod test {

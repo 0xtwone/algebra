@@ -26,9 +26,11 @@
 
 - [\#1121](https://github.com/arkworks-rs/algebra/pull/1121) (all) Bump the minimum supported Rust version to 1.89.
 - (`ark-poly`) the `Div` implementation is now restricted to polynomials defined over `FftField`. Non-`FftField` polys can instead use the `naive_div` method.
+- (`ark-algebra-test-templates`) Rename the test-vector based `test_h2c!` macro to `test_h2c_suite!`; `test_h2c!` now runs randomized hash-to-curve tests that need no test vectors.
 
 ### Features
 
+- (`ark-algebra-test-templates`) Add a `test_h2c!` macro running randomized tests for any `MapToCurve` implementation, and use it for the WB and SWU maps of BLS12-377 and BLS12-381 and the Elligator2 map of Bandersnatch, replacing the toy-curve tests in `ark-ec`'s `curve_maps` modules.
 - (`ark-serialize`) Implementation of `CanonicalSerialize` and `CanonicalDeserialize` for signed integer types
 - [\#1115](https://github.com/arkworks-rs/algebra/pull/1115) (`ark-serialize`) Implement `CanonicalSerialize`, `Valid`, and `CanonicalDeserialize` for `Box<T>`.
 - [\#1084](https://github.com/arkworks-rs/algebra/pull/1084) (`ark-ff`) Add `from_u128` const constructor for `SmallFp` fields
